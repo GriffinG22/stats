@@ -9,19 +9,25 @@ const matches = fs
     return row.split(",");
   });
 
-let manUnitedWinsHome = 0;
-let manUnitedWinsAway = 0;
-
-for (let match of matches) {
-  if (match[1] === "Man United" && match[5] === "H") {
-    manUnitedWinsHome++;
-  } else if (match[2] === "Man United" && match[5] === "A") {
-    manUnitedWinsAway++;
+const winAnalyzer = (
+  team: string,
+  counterHome: number,
+  counterAway: number
+): void => {
+  for (let match of matches) {
+    if (match[1] === team && match[5] === "H") {
+      counterHome++;
+    } else if (match[2] === team && match[5] === "A") {
+      counterAway++;
+    }
   }
-}
 
-console.log(
-  `Man United won ${
-    manUnitedWinsAway + manUnitedWinsHome
-  } games in 2018. Of those wins ${manUnitedWinsHome} were at home and ${manUnitedWinsAway} were away.`
-);
+  console.log(
+    `${team} won ${
+      counterAway + counterHome
+    } games in 2018. Of those wins ${counterHome} were at home and ${counterAway} were away.`
+  );
+};
+
+winAnalyzer("Cardiff", 0, 0);
+winAnalyzer("Man United", 0, 0);
