@@ -31,3 +31,6 @@ const winAnalyzer = (
 
 winAnalyzer("Cardiff", 0, 0);
 winAnalyzer("Man United", 0, 0);
+winAnalyzer("Everton", 0, 0);
+winAnalyzer("Burnley", 0, 0);
+winAnalyzer("Fulham", 0, 0);
