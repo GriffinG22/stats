@@ -1,13 +1,24 @@
 import { CsvFileReader } from "./CsvFileReader";
-import { MatchResult } from "./MatchResult";
 import { MatchReader } from "./MatchReader";
+import { Summary } from "./Summary";
+import { WinsAnalysis } from "./Analyzers/WinsAnalysis";
+import { ConsoleReport } from "./reportTargets/ConsoleReport";
 
 const csvFileReader = new CsvFileReader("football.csv");
 
 const matchReader = new MatchReader(csvFileReader);
 matchReader.load();
 
-let teamWins = 0;
+const manUnitedWinsAnalysisSummary = new Summary(
+  new WinsAnalysis("Man United"),
+  new ConsoleReport()
+);
+
+manUnitedWinsAnalysisSummary.buildAndPrintReport(matchReader.matches);
+
+// ------Old-------
+
+/* let teamWins = 0;
 
 for (let match of matchReader.matches) {
   if (match[1] === "Man United" && match[5] === MatchResult.HomeWin) {
@@ -18,7 +29,7 @@ for (let match of matchReader.matches) {
 }
 
 console.log(`Man United won ${teamWins} games in 2018.`);
-
+ */
 /* const winAnalyzer = (
   team: string,
   counterHome: number,
