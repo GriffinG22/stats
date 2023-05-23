@@ -9,11 +9,11 @@ const matches = fs
     return row.split(",");
   });
 
-const MatchResult = {
-  HomeWin: "H",
-  AwayWin: "A",
-  Draw: "D",
-};
+enum MatchResult {
+  HomeWin = "H",
+  AwayWin = "A",
+  Draw = "D",
+}
 
 let teamWins = 0;
 
